@@ -119,13 +119,35 @@
         // validate the inputs before giving feedback to the user
         const validated = validateInputs(selectedChoice, uName);
 
-        if (!validated) 
-          return alert("You have not filled in your name")
+        //check if meal preference is selected
+        const mealPreference = document.getElementsByName("inclineRadioMeal");
 
-          const result = ftnGreeting(selectedChoice, uName);
-          return alert(result);
-      }
+        //create a boolean
+        let mealSelected = false;
 
+        for (let index = 0; index < mealPreference.length; index++) {
+          if (mealPreference[index].checked) {
+            mealSelected = true;
+            break;
+          }
+        }
+
+        // discontinue and show alert if validateInputs returns false or mealSelected is false
+        // if (!validated || !mealSelected)
+        //   return alert("Please complete all inputs.");
+
+        //   //call function greeting
+        //   const result = ftnGreeting(selectedChoice, uName);
+        //   return alert(result);
+        
+
+      if (validated && mealSelected) {
+
+        const result = ftnGreeting(selectedChoice, uName);
+        return alert(result);
+    }
+    return alert("Please complete all inputs");
+  }
     </script>
   
     <!-- Bootstrap JavaScript Library -->
